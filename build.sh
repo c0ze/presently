@@ -23,10 +23,11 @@ done
 # compile coffee script
 
 for file in $(find . -type f -name \*.coffee); do
-    envsubst < ${file} > ${file}
+    envsubst '$API_KEY' < ${file} > ${file}.tmp
     dir="./$TARGETDIR/$(dirname ${file})"
     mkdir -p "$dir"
-    coffee -b  -o "$dir" -c ${file}
+    coffee -b  -p ${file}.tmp > "$dir/$(basename ${file%.*}).js"
+    rm ${file}.tmp
 done
 
 # copy css
