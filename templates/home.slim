@@ -4,13 +4,15 @@ div
       | {{ date.tz | date:'HH mm ss' }}
     h2
       | {{ date.tz | date:'EEEE, MMMM yyyy' }}
+    h2
+      | {{ user.location }}
   #forecast
     ul.row.list-unstyled
       li.col-md-3[ng-repeat="day in weather.forecast.forecastday"]
         span[ng-class="{today: $index == 0}"]
           img[ng-class="{{ day.icon }}" ng-src="{{ day.icon_url }}"]
         h3
-          | {{ day.high.fahrenheit }}
+          | {{ day.high[user.tempDisplay.degrees] }}
         h4[ng-if="$index == 0"]
           | Now
         h4[ng-if="$index != 0"]
