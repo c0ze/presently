@@ -1,0 +1,5 @@
+h2
+  | Settings
+form[ng-submit="save()"]
+  input[type="text" ng-model="user.location" timezone="user.timezone" auto-fill="fetchCities" autocomplete="off" placeholder="Location"]
+  input.btn.btn-primary[type="submit" value="Save"]
